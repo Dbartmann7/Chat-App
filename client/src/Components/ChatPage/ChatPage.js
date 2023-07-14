@@ -5,9 +5,9 @@ import UserList from "./UserList"
 const ChatPage = (props) => {
 
     return(<div className="chatPageContainer">
-        <div className="placeholder"></div>
-        <ChatBox/>
         <UserList/>
+        <ChatBox/>
+        
     </div>)
 }
 

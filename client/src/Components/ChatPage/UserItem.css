@@ -10,11 +10,12 @@
 
 .UserItemHeader{
     width:100%;
-    background-color: red;
     display: flex;
+    padding-top: 10px;
 }
 .username{
     text-align: end;
     width: 100%;
     white-space: nowrap;
+    color: white;
 }

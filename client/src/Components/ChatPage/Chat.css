@@ -8,10 +8,9 @@ p{
     background-color: rgb(0, 0, 224);
     flex-direction: column;
     border-radius: 3em;
-    width:82%;
+    width: fit-content;
     max-height: fit-content;
     margin-bottom: 2em;
-    position:relative;
     padding-left: 3em;
     padding-right: 3em;
 }

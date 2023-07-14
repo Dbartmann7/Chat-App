@@ -2,31 +2,8 @@
     width:100%;
     flex-direction: row;
     display: flex;
-}
-
-.placeholder{
-    width: 20%;
+    height: 97vh;
 }
 
 
-
-.ChatsDisplayBox{
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 100px;
-    width:inherit;
-    height:86vh;
-    border: 0.5em solid black;
-    overflow-y: auto;
-    background-color: rgb(110, 110, 110);
-}
-
-
-::-webkit-scrollbar{
-    width:10px;
-}
-::-webkit-scrollbar-thumb{
-    background-color: rgb(36, 36, 36);
-    border-radius: 20px;
-}
 

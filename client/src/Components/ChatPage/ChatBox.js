@@ -54,10 +54,16 @@ const ChatBox = (props) => {
                 setMessage={setMessage}
                 sendMessage={sendMessage}
             />
-            <SendChatBtn 
-                message={message}
-                sendMessage={sendMessage}
-            />
+            <div className="MessageBtns">
+                <SendChatBtn 
+                    message={message}
+                    sendMessage={sendMessage}
+                />
+                <SendChatBtn 
+                    message={message}
+                    sendMessage={sendMessage}
+                />
+            </div>
         </div>
         
     </div>)

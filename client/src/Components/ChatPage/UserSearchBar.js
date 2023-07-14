@@ -7,7 +7,7 @@ const UserSearchBar = (props) => {
     return(
      
         <div className="searchContainer">
-            <input className="searchUserInput"
+            <input
                 value={userToSearch}
                 placeholder="Search User..."
                 onChange={(e) => {

@@ -1,0 +1,38 @@
+
+.ChatsDisplayBox{
+    display: flex;
+    flex-direction: column-reverse;
+    width:98%;
+    border-radius: 20px;
+    border: 3px solid rgb(110, 110, 110);
+    height: 95%;
+    margin:10px;
+    overflow-y: scroll;
+    top:0;
+    position: absolute;
+    justify-content: start;
+}
+
+.ChatsContainer{
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    height: 90%;
+    margin-top: 10px;
+    overflow-y: scroll;
+}
+.ChatsContainer>ul{
+    margin-bottom: 0;
+}
+
+::-webkit-scrollbar{
+    width:10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(36, 36, 36);
+    border-radius: 20px;
+}
+.ChatsContainer::-webkit-scrollbar-track{
+    margin-top: 12px;
+}
+
