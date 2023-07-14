@@ -1,0 +1,20 @@
+.UserItem{
+    width: 90%;
+    height: 5em;
+    margin-top: 5px;
+    background-color: rgb(68, 68, 68);
+    padding-left: 5%;
+    padding-right: 5%;
+    color: white;
+}
+
+.UserItemHeader{
+    width:100%;
+    background-color: red;
+    display: flex;
+}
+.username{
+    text-align: end;
+    width: 100%;
+    white-space: nowrap;
+}

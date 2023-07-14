@@ -1,0 +1,24 @@
+.sendBtn{
+    min-width: 20%;
+    max-width: 20%; 
+    height:inherit;
+    margin-right:0;
+    background-color: rgb(194, 194, 194);
+    font-size: 2em;
+    display: inline-block;
+    padding:0;
+    margin: 0;
+    border:0;
+}
+
+.messageInput{
+    padding:0;
+    margin: 0;
+    border:0;
+    min-width: 78%;
+    max-width: 78%;
+    text-indent: 1em;
+    font-size: 1em;
+    height: 100%;
+    border-radius: 20px;
+}

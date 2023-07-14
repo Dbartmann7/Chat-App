@@ -1,0 +1,30 @@
+.chatBoxContainer{
+    display: flex;
+    flex-direction: column;
+
+    height:98vh;
+    width: 100%; 
+    margin-right: 1em; 
+}
+@media (width< 72em){
+    .chatBoxContainer{
+        width:100%;
+    }
+}
+.messageBox{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+    border: 0.5em solid black;
+    width: inherit;
+    height:10vh;
+    gap: 1em;
+    background-color: black;
+    grid-template-columns: auto auto;
+}
+
+@media (width< 50em){
+    .messageBox{
+        width:95vw;
+    }
+}
