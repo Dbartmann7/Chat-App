@@ -21,6 +21,9 @@ const ChatsSchema = new mongoose.Schema({
         trim:true,
         maxLength:1000
     },
+    imgURL:{
+        type:String||null
+    },
     username:{
         type:String
     },

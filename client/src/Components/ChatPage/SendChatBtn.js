@@ -6,7 +6,7 @@ const SendChatBtn = (props) => {
     
     const handleClick = () => {
 
-        if(message.length > 0) {
+        if(message.body.length > 0) {
             sendMessage()
         }
         
