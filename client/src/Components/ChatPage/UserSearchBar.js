@@ -7,7 +7,7 @@ const UserSearchBar = (props) => {
     return(
      
         <div className="searchContainer">
-            <input
+            <input className="ChatPageInput"
                 value={userToSearch}
                 placeholder="Search User..."
                 onChange={(e) => {

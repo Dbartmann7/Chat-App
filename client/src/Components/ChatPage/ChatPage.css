@@ -5,5 +5,13 @@
     height: 97vh;
 }
 
+.ChatPageInput{
+    background-color: rgb(68, 68, 68);
+    color: white;
+}
+.ChatPageInput::placeholder{
+    color: rgb(173, 173, 173);
+}
+
 
 

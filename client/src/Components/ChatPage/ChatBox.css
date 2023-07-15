@@ -7,7 +7,7 @@
     min-height: 500px;
     background-color: rgb(58, 58, 58);
     border-radius: 20px;
-    border: rgb(110, 110, 110) outset;
+    border: rgb(110, 110, 110);
     position: relative;
 }
 @media (width< 72em){

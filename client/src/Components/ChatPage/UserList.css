@@ -4,8 +4,19 @@
     flex-direction: column;
     background-color: rgb(58, 58, 58);
     border-radius: 20px;
-    border: rgb(110, 110, 110) outset;
+    border: rgb(110, 110, 110);
     margin-right: 10px;
+}
+
+@media screen and (orientation:portrait){
+    .UserListContainer{
+        display: none;
+    }
+}
+@media screen and (orientation:landscape){
+    .UserListContainer{
+        display: flex;
+    }
 }
 
 .searchContainer{
@@ -20,7 +31,6 @@
     width:65%;
     height: 30px;
     border-radius: 20px;
-    border:inset;
     padding-left: 1em;
     padding-right: 2em;
 }

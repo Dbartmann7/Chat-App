@@ -9,7 +9,7 @@ const InputBox = (props) => {
         }
     }
     return(<>
-        <input className="messageInput"
+        <input className="messageInput ChatPageInput"
             placeholder={"Type message..."}
             type="text"
             value={message}
