@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import "./messageBox.css"
+import {BsSendFill} from "react-icons/bs"
+import "./SendChatBtn.css"
 const SendChatBtn = (props) => {
     const {message, sendMessage} = props
     
@@ -12,9 +13,10 @@ const SendChatBtn = (props) => {
     }
     
     return(<>
-        <button className="sendBtn" type="Submit" onClick={handleClick}>
-            Send
-        </button>
+        <div className="BtnContainer">
+            <BsSendFill className="MessageIcon"/>
+            <button className="MessageBtn" type="Submit" onClick={handleClick}/>
+        </div>
     </>)
 }
 

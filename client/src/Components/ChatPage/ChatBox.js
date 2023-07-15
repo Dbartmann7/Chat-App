@@ -6,7 +6,9 @@ import SendChatBtn from "./SendChatBtn"
 import InputBox from "./InputBox"
 import ChatsDisplay from "./ChatsDisplay"
 import "./ChatBox.css"
+import "./messageBox.css"
 import { UserContext } from "../../Contexts/UserContext"
+import ImageBtn from "./ImageButton"
 
 const socket = io.connect("http://localhost:8000")
 const ChatBox = (props) => {
@@ -55,14 +57,12 @@ const ChatBox = (props) => {
                 sendMessage={sendMessage}
             />
             <div className="MessageBtns">
+                <ImageBtn/>
                 <SendChatBtn 
                     message={message}
                     sendMessage={sendMessage}
                 />
-                <SendChatBtn 
-                    message={message}
-                    sendMessage={sendMessage}
-                />
+                
             </div>
         </div>
         

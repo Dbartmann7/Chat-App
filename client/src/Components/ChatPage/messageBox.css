@@ -3,41 +3,30 @@
     flex-direction: row;
     align-items: center;
     width: inherit;
-    height: 10%;
+    height: 90px;
     margin-bottom: 10px;
     width: 95%;
     bottom: 0;
     position: absolute;
-    background-color: inherit;
+    background-color: transparent;
 }
 .MessageBtns{
-    width:20%;
-    height:75%;
-    min-width: 250px;
+    width:180px;
+    height:inherit;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     z-index: 1;
     position: absolute;
-    right:0
-}
-.sendBtn{
-    width:100px;
-    height: 100%;
-    margin-right:7px;
-    background-color: rgb(68, 68, 68);
-    font-size: 2em;
-    display: inline-block;
-    padding:0;
-    border: 0;
-    background-color: red;
+    right:0;
+    justify-content: flex-end;
 }
 
 .messageInput{
-    width:100%;
-    text-indent: 1em;
+    width: calc(100% - 195px);
     font-size: 1em;
     height: 75%;
     border-radius: 20px;
     position: absolute;
+    padding-right: 180px;
+    padding-left: 15px;
 }
