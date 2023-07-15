@@ -5,14 +5,13 @@ p{
 
 .Chat{
     display: flex;
-    background-color: rgb(0, 0, 224);
+    width: 90%;
+    border-top: 2px solid rgb(28, 28, 28);
     flex-direction: column;
-    border-radius: 3em;
-    width: fit-content;
     max-height: fit-content;
-    margin-bottom: 2em;
-    padding-left: 3em;
-    padding-right: 3em;
+    margin-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .header{
@@ -24,7 +23,7 @@ p{
     justify-items: left;
 }
 
-.username{
+.header>.username{
     position: relative;
     width:50%;
 }

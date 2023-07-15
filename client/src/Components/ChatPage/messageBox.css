@@ -5,7 +5,6 @@
     width: inherit;
     height: 10%;
     margin-bottom: 10px;
-    border-top: 2px solid rgb(28, 28, 28);;
     width: 95%;
     bottom: 0;
     position: absolute;
@@ -18,24 +17,27 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
+    z-index: 1;
+    position: absolute;
+    right:0
 }
 .sendBtn{
     width:100px;
-    height: 90%;
-    border-radius: 20px;
+    height: 100%;
     margin-right:7px;
-    background-color: rgb(194, 194, 194);
+    background-color: rgb(68, 68, 68);
     font-size: 2em;
     display: inline-block;
     padding:0;
-    border:0;
+    border: 0;
+    background-color: red;
 }
 
 .messageInput{
-    width:80%;
+    width:100%;
     text-indent: 1em;
     font-size: 1em;
     height: 75%;
     border-radius: 20px;
+    position: absolute;
 }

@@ -8,16 +8,12 @@
     margin-right: 10px;
 }
 
-@media screen and (orientation:portrait){
+@media (hover:none){
     .UserListContainer{
         display: none;
     }
 }
-@media screen and (orientation:landscape){
-    .UserListContainer{
-        display: flex;
-    }
-}
+
 
 .searchContainer{
     display:flex;
