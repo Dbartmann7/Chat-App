@@ -4,14 +4,11 @@ const InputBox = (props) => {
     const {message, setMessage, sendMessage} = props
 
     const handleEnter = () => {
-        if(message.length > 0){
+        if(message.body.length > 0){
             sendMessage()
         }
     }
 
-    useEffect(() => {
-        console.log(message)
-    }, [message])
     return(<>
         <input className="messageInput ChatPageInput"
             placeholder={"Type message..."}

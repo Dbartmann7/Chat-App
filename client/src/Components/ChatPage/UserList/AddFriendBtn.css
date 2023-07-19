@@ -2,7 +2,7 @@
     width: 40px;
     height:40px;
     margin-right:20px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -16,6 +16,7 @@
     height:90%;
     position: absolute;
     padding:5px;
+    padding-left: 0;
 }
 .AddFriendBtnContainer > .AddFriendBtn{
     width: 100%;
