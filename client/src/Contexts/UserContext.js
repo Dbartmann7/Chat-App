@@ -53,17 +53,9 @@ export const UserContextProvider = ({children}) => {
         }
     }
 
-    const getFriends = () => {
-        if(!loggedIn){
-            return null
-        }
-
-
-
-    }
-
     const value = {
         username, setUsername,
+        friends, setFriends,
         email, setEmail, 
         password, setPassword,
         loggedIn, setLoggedIn,

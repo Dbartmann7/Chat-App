@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import "./UserList.css"
+import "./Dashboard.css"
 import { AiOutlineSearch } from "react-icons/ai"
 const UserSearchBar = (props) => {
     const {userToSearch, setUserToSearch, searchUser} = props

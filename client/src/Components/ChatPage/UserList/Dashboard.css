@@ -1,4 +1,4 @@
-.UserListContainer{
+.DashboardContainer{
     min-width:275px;
     display: flex;
     flex-direction: column;
@@ -8,8 +8,9 @@
     margin-right: 10px;
 }
 
+
 @media (hover:none){
-    .UserListContainer{
+    .DashboardContainer{
         display: none;
     }
 }

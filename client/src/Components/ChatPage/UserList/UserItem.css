@@ -1,15 +1,22 @@
 .UserItem{
-    width: 90%;
-    height: 5em;
-    margin-top: 5px;
+    width: 80%;
+    height: 100px;
+    margin:5px;
     background-color: rgb(68, 68, 68);
     padding-left: 5%;
     padding-right: 5%;
     color: white;
 }
 
-.UserItemHeader{
+.UserItem > .username{
     width:100%;
     display: flex;
     padding-top: 10px;
+    margin-bottom: 0;
+}
+
+.Buttons{
+    display: flex;
+    width:100%;
+    height:50px;
 }

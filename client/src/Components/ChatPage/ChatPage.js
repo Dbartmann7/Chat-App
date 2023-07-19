@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import ChatBox from "./ChatBox"
 import "./ChatPage.css"
-import UserList from "./UserList"
+import Dashboard from "./UserList/Dashboard.js"
 const ChatPage = (props) => {
 
     return(<div className="chatPageContainer">
-        <UserList/>
+        <Dashboard/>
         <ChatBox/>
         
     </div>)

@@ -34,7 +34,12 @@ const getUserAuth = async (req, res) => {
 const getUser = async (req, res) => {
     try {
         const user = await Users.findOne({username:req.query.username})
-        res.status(200).json({username:user.username})
+        if(user){
+            res.status(200).json({username:user.username})
+        }else{
+            res.status(404).json({message:`user ${req.query.username} not found`})
+        }
+        
     } catch (error) {
         console.log(error)
         res.status(500).json({error:error})

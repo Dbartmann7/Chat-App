@@ -1,0 +1,22 @@
+.UserListContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid black;
+    width: inherit;
+}
+
+.UserListContainer > ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.UserListContainer > .title{
+    padding-top: 5px;
+}

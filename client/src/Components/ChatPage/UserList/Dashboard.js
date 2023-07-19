@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react"
-import usersAPI from "../../apis/usersAPI"
-import "./UserList.css"
+import React, { useContext, useEffect, useState } from "react"
+import usersAPI from "../../../apis/usersAPI"
+import "./Dashboard.css"
 import UserSearchBar from "./UserSearchBar"
-import UserItem from "./UserItem"
-import SearchedUser from "./SearchedUsers"
-const UserList = () => {
+import { UserContext } from "../../../Contexts/UserContext"
+import UserList from "./UserList"
+const Dashboard = () => {
+    const {friends} = useContext(UserContext) 
+
     const [userToSearch, setUserToSearch] = useState('')
-    const [searchedUser, setSearchedUser] = useState({})
+    const [searchedUser, setSearchedUser] = useState(null)
     useEffect(()=>{
         console.log(searchedUser)
     }, [searchedUser])
@@ -24,15 +26,16 @@ const UserList = () => {
     }
 
     return(
-        <div className="UserListContainer">
+        <div className="DashboardContainer">
             <UserSearchBar
                 userToSearch={userToSearch}
                 setUserToSearch={setUserToSearch}
                 searchUser={searchUser}
             />
-            {searchedUser.username ? <UserItem user={searchedUser}/>: null}
+            {searchedUser ? <UserList users={[searchedUser]} title={"Searched User"}/> : null}
+            <UserList users={friends} title="Friends List"/>
         </div>
     )
 }
 
-export default UserList
+export default Dashboard
