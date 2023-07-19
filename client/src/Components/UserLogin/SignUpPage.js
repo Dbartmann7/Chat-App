@@ -3,12 +3,15 @@ import { UserContext } from "../../Contexts/UserContext";
 
 import "./UserLogin.css"
 import UserInput from "./UserInput";
+import usersAPI from "../../apis/usersAPI";
 
 function SignUpPage( props) {
     const {username, setUsername, email, setEmail, password, setPassword, signUp} = useContext(UserContext)
     const {setShowLogIn, validationFunctions} = props
 
-    
+    // // useEffect(() => {
+    //     usersAPI.post("/friends", {username:"test", friendToAdd:"Daniel"})
+    // // }, [])
     return (
         <div className='signUpPage'>
             <h1>Create An Account</h1>

@@ -13,6 +13,14 @@ const UsersSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    friends:{
+        type:[{username:{
+                type:String
+                }
+            }
+        ],
+        required:true
     }
 })
 

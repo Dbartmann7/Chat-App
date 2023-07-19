@@ -9,6 +9,7 @@ export const UserContextProvider = ({children}) => {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
+    const [friends, setFriends] = useState([])
 
     const logIn = async () => {
         try{
@@ -25,6 +26,8 @@ export const UserContextProvider = ({children}) => {
 
             if(await bcrypt.compare(password, res.data.password)){
                 setLoggedIn(true)
+                console.log(res.data.friends)
+                setFriends(res.data.friends)
             }else{
                 alert("wrong password")
             }
@@ -48,6 +51,15 @@ export const UserContextProvider = ({children}) => {
         }catch(error){
             console.log(error)
         }
+    }
+
+    const getFriends = () => {
+        if(!loggedIn){
+            return null
+        }
+
+
+
     }
 
     const value = {

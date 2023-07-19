@@ -6,7 +6,8 @@ const createUser = async (req, res) =>{
         await Users.create({
             email:req.body.email,
             username:req.body.username,
-            password:req.body.password
+            password:req.body.password,
+            friends: []
         })
         res.status(200).json({message:"user created"})
     } catch (error) {
@@ -40,4 +41,29 @@ const getUser = async (req, res) => {
     }
 }
 
-module.exports = {getUserAuth, getUser, createUser}
+const addFriend = async (req, res) => {
+    try{
+        const newFriendUser = await Users.findOne({username:req.body.friendToAdd})
+        if(!newFriendUser){
+            res.status(404).json({message:"user not found"})
+        }else{
+            const user = await  Users.findOne({username:req.body.username})
+            console.log(user)
+            let newFriends = []
+            if(!user.friends){
+                newFriends = [{username:newFriendUser.username, _id:newFriendUser._id}]
+            }else{
+                newFriends = [...user.friends, {username:newFriendUser.username, _id:newFriendUser._id}]
+            }
+            const updateRes = await Users.findOneAndUpdate({username:req.body.username}, {friends:newFriends})
+            console.log(updateRes)
+            res.status(200).json({message:`new friend ${req.body.username} added`})
+        }
+        
+    }catch(error){
+        console.log(error)
+        res.status(500).json({error:error})
+    }
+}
+
+module.exports = {getUserAuth, getUser, createUser, addFriend}

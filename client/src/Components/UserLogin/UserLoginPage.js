@@ -31,7 +31,6 @@ function UserLoginPage() {
         validateUsername:validateUsername,
         validatePassword:validatePassword
     }
-
     return (
         <div className='userLoginPage'>
             {showLogIn ? <LogInPage 

@@ -11,6 +11,7 @@ const postChat = async (req, res) => {
         })
         res.status(200).json({msg:`message ${req.body.message} sent`})
     } catch (error) {
+        res.status(500).json({error: error})
         console.log(error)
     }
 }
@@ -22,6 +23,7 @@ const getChats = async (req, res) => {
         res.json(response)
     }catch(error){
         console.log(error)
+        res.status(500).json({error: error})
     }
 }
 

@@ -14,7 +14,8 @@ const UserList = () => {
         try {
             const res = await usersAPI.get("/", {params:{username:userToSearch}})
             if(res.status===200){
-                setSearchedUser(res.data.username)
+                setSearchedUser(res.data)
+                console.log(res.data)
             }
         } catch (error) {
             console.log(error)
@@ -29,8 +30,7 @@ const UserList = () => {
                 setUserToSearch={setUserToSearch}
                 searchUser={searchUser}
             />
-            <SearchedUser users={[{username:"test"}]}/>
-            {/* {searchedUser.username ? <UserItem user={searchedUser}/>: null} */}
+            {searchedUser.username ? <UserItem user={searchedUser}/>: null}
         </div>
     )
 }
