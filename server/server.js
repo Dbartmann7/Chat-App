@@ -1,15 +1,14 @@
 const express = require("express")
 const app = express()
-const {connectDB, dbConnection} = require("./db/connect")
+const {connectDB} = require("./db/connect")
 const { Server } = require("socket.io")
 require("dotenv").config()
 app.use(express.json())
 const cors = require('cors');
 app.use(cors());
-const PORT = 5000
+
 const chats = require("./routes/chats")
 const usersRoute = require("./routes/users")
-const Chats = require("./models/Chats")
 const Users = require("./models/Users")
 const io = new Server({
     cors:{
@@ -24,8 +23,8 @@ const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI)
         console.log("connected to db...")
-        app.listen(PORT, () => {
-            console.log(`server listening on port ${PORT}`)
+        app.listen(process.env.EXPRESS_SERVER_PORT, () => {
+            console.log(`server listening on port ${process.env.EXPRESS_SERVER_PORT}`)
         })
         
     } catch (error) {
@@ -35,21 +34,54 @@ const start = async () => {
 
 start()
 
+const usersWatcher = Users.watch()
+let users = {}
+
+
+usersWatcher.on("change", (change) => {
+
+    if(change.operationType === "update" && change.updateDescription.updatedFields.friends){
+        if(users[change.documentKey._id]){
+            console.log("friend changed")
+            users[change.documentKey._id].socket.emit("friendsChanged")
+        }
+        
+    }
+})
+
+
 io.on("connection", (socket) => {
-    console.log("user connected")
 
-    const chatsWatcher = Chats.watch()
+    console.log(`"user connected: ${socket.id}"`)
 
-    chatsWatcher.on("change", (change) => {
-        switch(change.operationType){
-            case "insert":
-                socket.emit("newChat", change.fullDocument)
-                break
-            case "delete":
-                socket.emit("chatDeleted")
-                break
-            default:
-                console.log("error")
+    socket.on("login", (userData) => {
+       
+        if(users[userData.userID]){
+            socket.emit("login", {status:500, error:"user already on logged in"})
+        }else{
+            socket.data.userID = userData.userID
+            users[userData.userID] = {socket:socket}
+            socket.emit("login", {status:200})
+            console.log(Object.keys(users))
+        }
+        
+        
+    })
+    
+    socket.on("newChat", ({message, toUser, sentFrom}) => {
+        if(users[toUser]){
+            const body = message.body
+            const timeSent = message.timeSent
+            const username = message.username
+            users[toUser].socket.emit("newChat", {sentFrom, body,timeSent, username})
         }
     })
+
+    socket.once("disconnect", async () => {
+        delete users[socket.data.userID]
+     
+        if(socket.disconnected) console.log(`user disconnected ${socket.id}`)
+        return
+    })
+  
 })

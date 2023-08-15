@@ -1,7 +1,6 @@
 import './App.css';
 import React,  {useContext, useEffect, useState} from "react"
 import ChatPage from './Components/ChatPage/ChatPage';
-import LogInPage from './Components/UserLogin/LogInPage';
 import { UserContext } from './Contexts/UserContext';
 import UserLoginPage from './Components/UserLogin/UserLoginPage';
 

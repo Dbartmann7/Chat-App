@@ -1,8 +1,22 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
 const InputBox = (props) => {
-    const {message, setMessage, sendMessage} = props
+    const {toUser, message, setMessage, sendMessage} = props
 
+    const [inputDisabled, setInputDisabled] = useState(true)
+
+    useEffect(() =>{
+        if(toUser._id){
+            setInputDisabled(false)
+        }else{
+            setInputDisabled(true)
+        }
+        console.log(toUser)
+        console.log(inputDisabled)
+    }, [toUser])
+
+
+    
     const handleEnter = () => {
         if(message.body.length > 0){
             sendMessage()
@@ -21,6 +35,7 @@ const InputBox = (props) => {
 
                 })}
             onKeyDown={e => {if(e.code === "Enter") handleEnter()}}
+            disabled={inputDisabled}
         />
     </>)
 }

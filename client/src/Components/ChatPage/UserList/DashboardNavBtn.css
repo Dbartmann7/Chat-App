@@ -1,0 +1,28 @@
+.DashboardNavBtnContainer{
+    width:50%;
+    height: 100%;
+    
+    overflow: hidden;
+    position: relative;
+
+    &:hover{
+        color: rgb(164, 164, 164);
+        background-color: rgb(70, 70, 70);
+        
+    }
+    
+   
+}
+.DashboardNavBtn{
+    width: 50% !important;
+    border-right: solid black 2px;
+    transform: none !important;
+    &:last-child{
+        border-right:0;
+    }
+}
+.DashboardNavBtn:hover{
+    background-color: rgb(70, 70, 70);
+    
+}
+

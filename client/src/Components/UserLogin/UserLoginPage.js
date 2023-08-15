@@ -4,7 +4,7 @@ import SignUpPage from "./SignUpPage"
 import "./UserLogin.css"
 import { UserContext } from "../../Contexts/UserContext";
 function UserLoginPage() {
-    const [showLogIn, setShowLogIn] = useState(false)
+    const [showLogIn, setShowLogIn] = useState(true)
     const {username, email, password} = useContext(UserContext)
 
 

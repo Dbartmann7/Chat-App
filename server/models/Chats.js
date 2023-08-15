@@ -1,20 +1,6 @@
 const mongoose = require("mongoose")
 
 const ChatsSchema = new mongoose.Schema({
-    // from:{
-    //     type:String,
-    //     required:[true, "must provide name"],
-    //     trim:true,
-    //     maxlength:[20, "name cannot exceed 20 chars"]
-
-    // },
-    // to:{
-    //     type:String,
-    //     required:[true, "must provide name"],
-    //     trim:true,
-    //     maxlength:[20, "name cannot exceed 20 chars"]
-
-    // },
     body:{
         type:String,
         required:[true, "No body"],
@@ -24,7 +10,15 @@ const ChatsSchema = new mongoose.Schema({
     imgURL:{
         type:String||null
     },
+    sentFrom:{
+        type:String
+    },
     username:{
+        type:String,
+        required:[true, "no username"]
+    },
+    to:{
+        required:[true, "no to"],
         type:String
     },
     timeSent:{

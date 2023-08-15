@@ -13,6 +13,10 @@ p{
     padding-left: 50px;
     padding-right: 50px;
 }
+.Chat>img{
+    width:150px;
+    height:150px;
+}
 
 .header{
     display: flex;

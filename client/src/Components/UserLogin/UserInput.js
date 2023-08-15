@@ -6,7 +6,7 @@ const UserInput = (props) => {
     const {state, stateType, setState, inputType, validationFunc} = props
 
     return(
-        <>
+        <div className="AuthInputContainer">
             <h2>{stateType}</h2>
                 <div className="inputBox">
                 <input className="authInput"
@@ -21,7 +21,7 @@ const UserInput = (props) => {
                 {validationFunc? (validationFunc() ? <ValidationTick/>: <ValidationCross/>):null}
                 </div>
         
-        </>
+        </div>
     )
 }
 

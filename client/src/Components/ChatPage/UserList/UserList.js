@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UserItem from "./UserItem";
 import "./UserList.css"
-const UserList = ({users, title}) => {
-
+const UserList = ({users, title, setToUser, currentDisplay}) => {
+    const [key, setKey] = useState(0)
+    
+    // force update userItems to currently show if user is a friend
+    useEffect(() => {
+        setKey(key+1)
+    }, [users, title,currentDisplay])
+    
     return(
-        <div className="UserListContainer">
+        <div className="UserListContainer" key={key}>
             <h1 className="title">{title}</h1>
+            
             {users.length>0 ? 
-                <ul>
+            
+                <ul className="scrollable">
                 {users.map((user, i) => {
-                    return <UserItem key={i} user={user}/>
+                    return <UserItem key={i} user={user} setToUser={setToUser} currentDisplay={currentDisplay}/>
                         
                 })}
-                {/* <UserItem key={1} user={{username:"test"}}/>
-                <UserItem key={2} user={{username:"test2"}}/>
-                <UserItem key={3} user={{username:"test3"}}/> */}
+            
                 </ul>:
 
-                <h2>Friends List Empty</h2>
+                <h1>none</h1>
                 
             }
             

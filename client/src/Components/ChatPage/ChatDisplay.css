@@ -5,11 +5,12 @@
     /* border: 3px solid rgb(110, 110, 110); */
     height: 95%;
     margin:10px;
-    overflow-y: scroll;
+   
     top:0;
     position: absolute;
     justify-content: start;
     align-content: center;
+
 }
 
 .ChatsContainer{
@@ -26,15 +27,29 @@
     overflow-x: hidden;
 }
 
-::-webkit-scrollbar{
-    width:10px;
+.scrollable{
+    &::-webkit-scrollbar{
+        width:10px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background-color: transparent;
+        border-radius: 20px;
+    }
+    &:hover{
+        &::-webkit-scrollbar-thumb{
+            background-color: rgb(36,36,36);
+        }
+    }
 }
-::-webkit-scrollbar-thumb{
-    background-color: rgb(36, 36, 36);
-    border-radius: 20px;
-}
+
 .ChatsContainer::-webkit-scrollbar-track{
     margin-top: 12px;
 }
 
+
+.ChatNameContainer{
+    width: calc(100% - 40px);
+    height: min-content;
+    padding-left: 40px;
+}
 

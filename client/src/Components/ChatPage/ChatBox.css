@@ -11,6 +11,7 @@
     border: rgb(110, 110, 110);
     position: relative;
 }
+
 @media (width< 72em){
     .chatBoxContainer{
         width:100%;

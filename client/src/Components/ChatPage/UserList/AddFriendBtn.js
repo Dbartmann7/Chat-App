@@ -7,7 +7,7 @@ const AddFriendBtn = ({username}) => {
     }
     
     return(
-        <div className="AddFriendBtnContainer" data-tooltip="Add Friend">
+        <div className="AddFriendBtnContainer">
             <RiUserAddFill className="icon"/>
             <button className="AddFriendBtn"/>
             

@@ -3,12 +3,13 @@ const Users = require("../models/Users")
 // creates new user from sign up
 const createUser = async (req, res) =>{
     try {
-        await Users.create({
+        const result = await Users.create({
             email:req.body.email,
             username:req.body.username,
             password:req.body.password,
             friends: []
         })
+        console.log(result)
         res.status(200).json({message:"user created"})
     } catch (error) {
         console.log(error)
@@ -19,9 +20,13 @@ const createUser = async (req, res) =>{
 // gets requested user details to compare passwords at log in
 const getUserAuth = async (req, res) => {
     try{
-        console.log(req.query.username)
+ 
         const user = await Users.findOne({username:req.query.username})
-        res.json(user)
+        console.log(user)
+        
+        res.status(200).json({user:user})
+        
+        
 
     }catch(error){
         console.log(error)
@@ -33,9 +38,17 @@ const getUserAuth = async (req, res) => {
 // returns a requested user without the password
 const getUser = async (req, res) => {
     try {
-        const user = await Users.findOne({username:req.query.username})
+        let user = null
+        if(req.query.username){
+            user = await Users.findOne({username:req.query.username})
+        }else if(req.query._id){
+            user = await Users.findOne({_id:req.query._id})
+        }else{
+            res.status(400).json({message:`please enter a username or an id`})
+        }
+        
         if(user){
-            res.status(200).json({username:user.username})
+            res.status(200).json({_id:user._id, username:user.username, friends:user.friends})
         }else{
             res.status(404).json({message:`user ${req.query.username} not found`})
         }
@@ -46,23 +59,49 @@ const getUser = async (req, res) => {
     }
 }
 
-const addFriend = async (req, res) => {
+const patchFriends = async (req, res) => {
     try{
-        const newFriendUser = await Users.findOne({username:req.body.friendToAdd})
+        const newFriendUser = await Users.findOne({_id:req.body.friendToAdd})
+        console.log(newFriendUser)
         if(!newFriendUser){
             res.status(404).json({message:"user not found"})
         }else{
-            const user = await  Users.findOne({username:req.body.username})
-            console.log(user)
-            let newFriends = []
-            if(!user.friends){
-                newFriends = [{username:newFriendUser.username, _id:newFriendUser._id}]
-            }else{
-                newFriends = [...user.friends, {username:newFriendUser.username, _id:newFriendUser._id}]
+            const user = await  Users.findOne({_id:req.body.userID})
+            let userNewFriends = []
+            let friendNewFriends = []
+            switch(req.body.type){
+                case "add":
+                    if(!user.friends){
+                        userNewFriends = [{_id:newFriendUser._id, username:newFriendUser.username}]
+                        friendNewFriends = [{_id:req.body.userID, username:req.body.username}]
+                    }else{
+                        userNewFriends = [...user.friends, {_id:newFriendUser._id, username:newFriendUser.username}]
+                        friendNewFriends = [...newFriendUser.friends, {_id:req.body.userID, username:req.body.username}]
+                    }
+                    
+                    userUpdateRes = await Users.findOneAndUpdate({_id:req.body.userID}, {friends:userNewFriends})
+                    friendUpdateRes = await Users.findOneAndUpdate({_id:newFriendUser._id}, {friends:friendNewFriends})
+                    res.status(200).json({message:`new friend ${newFriendUser._id} added`})
+                    console.log("added friend")
+                    break
+                
+                case "remove":
+                    userNewFriends = user.friends.filter(friend => friend._id!=req.body.friendToAdd)
+                    console.log(userNewFriends)
+                    friendNewFriends = newFriendUser.friends.filter(friend => friend._id!=req.body.userID)
+
+                    userUpdateRes = await Users.findOneAndUpdate({_id:req.body.userID}, {friends:userNewFriends})
+                    friendUpdateRes = await Users.findOneAndUpdate({_id:newFriendUser._id}, {friends:friendNewFriends})
+                    res.status(200).json({message:`${newFriendUser._id} removed from friends list`})
+                    console.log("removedFriend")
+                    break
+                default:   
+                    res.status(400).json({message:"invalid operation type"})
+                    break
             }
-            const updateRes = await Users.findOneAndUpdate({username:req.body.username}, {friends:newFriends})
-            console.log(updateRes)
-            res.status(200).json({message:`new friend ${req.body.username} added`})
+            
+            
+            
         }
         
     }catch(error){
@@ -71,4 +110,4 @@ const addFriend = async (req, res) => {
     }
 }
 
-module.exports = {getUserAuth, getUser, createUser, addFriend}
+module.exports = {getUserAuth, getUser, createUser, patchFriends}

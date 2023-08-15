@@ -1,16 +1,15 @@
 import React from "react"
 import "./ChatDisplay.css"
 import Chat from "./Chat"
-const ChatsDisplay = (props) => {
-    const {messages} = props
+const ChatsDisplay = ({toUser, messages}) => {
 
-    console.log(messages)
     return(<>
         <div className="ChatsDisplayBox">
+          <div className="ChatNameContainer"><h1>{toUser.username}</h1></div>
           <div className="ChatsContainer">
-            <ul>
+            <ul className="scrollable">
               {messages.toReversed().map((message, i) => {
-                  return(<Chat key={i} clientID={message.username} message={message.body} timeSent={message.timeSent}/>)
+                  return(<Chat key={i}  message={message} messages={messages}/>)
               })}
             </ul>
             </div>
