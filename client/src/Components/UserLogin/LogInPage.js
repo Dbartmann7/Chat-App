@@ -23,10 +23,10 @@ const LogInPage = (props) => {
                     stateType="Password"
                     setState={setPassword}
                 />
-                <div className="buttons">
+            </div>
+            <div className="buttons">
                     <Button className="authBtn" displayText={"Login"} clickFunction={logIn}/>
                     <Button className="authBtn" displayText={"Sign Up"} clickFunction={() => {setShowLogIn(0)}}/>
-                </div>
             </div>
         </div>
     );

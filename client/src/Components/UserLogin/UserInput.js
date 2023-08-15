@@ -7,7 +7,7 @@ const UserInput = (props) => {
 
     return(
         <div className="AuthInputContainer">
-            <h2>{stateType}</h2>
+            <h2 className="authTitle">{stateType}</h2>
                 <div className="inputBox">
                 <input className="authInput"
                     type={inputType}
