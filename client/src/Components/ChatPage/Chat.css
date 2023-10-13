@@ -5,14 +5,14 @@ p{
 
 .Chat{
     display: flex;
-    width: 90%;
     border-top: 2px solid rgb(28, 28, 28);
     flex-direction: column;
     max-height: fit-content;
     margin-top: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
+    margin-bottom: 10px;
+    
 }
+
 .Chat>img{
     width:150px;
     height:150px;
@@ -21,27 +21,27 @@ p{
 .header{
     display: flex;
     flex-direction: row;
-    width: 100%;
     border-radius: inherit;
     position: relative;
-    justify-items: left;
+    margin:2%;
+   
 }
-
 .header>.username{
-    position: relative;
-    width:50%;
+    font-size: calc(10px +1vh);
+    margin: 0;
 }
 
 .time{
+    right:0;
     display: flex;
-    width:50%;
-    position: relative;
-    justify-content: flex-end;
-    margin-right: 1em;
+    font-size: calc(10px + 1vh);
+    position:absolute;
+    margin: 0;
 }
 
 .mainBody{
-    width: 100%;
+    font-size: calc(7px + .2vh);
+    margin-left:2%;
     position: relative;
     word-wrap: break-word;
 }

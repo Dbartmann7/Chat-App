@@ -10,23 +10,25 @@ const LogInPage = (props) => {
     return (
         <div className='logInPage'>
             <h1 className="AuthTitle">Log In</h1>
-            <div className="AuthInputs">
-                <UserInput
-                    inputType="text"
-                    state={username}
-                    stateType="Username"
-                    setState={setUsername}
-                />
-                <UserInput
-                    inputType="password"
-                    state={password}
-                    stateType="Password"
-                    setState={setPassword}
-                />
+            <div className="AuthInputsContainer">
+                <div className="AuthInputs">
+                    <UserInput
+                        inputType="text"
+                        state={username}
+                        stateType="Username"
+                        setState={setUsername}
+                    />
+                    <UserInput
+                        inputType="password"
+                        state={password}
+                        stateType="Password"
+                        setState={setPassword}
+                    />
+                </div>
             </div>
             <div className="buttons">
-                    <Button className="authBtn" displayText={"Login"} clickFunction={logIn}/>
-                    <Button className="authBtn" displayText={"Sign Up"} clickFunction={() => {setShowLogIn(0)}}/>
+                <Button className="authBtn" displayText={"Sign Up"} clickFunction={() => {setShowLogIn(0)}}/>
+                <Button className="authBtn" displayText={"Login"} clickFunction={logIn}/>
             </div>
         </div>
     );

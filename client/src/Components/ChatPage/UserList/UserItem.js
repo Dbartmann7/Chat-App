@@ -5,12 +5,12 @@ import usersAPI from "../../../apis/usersAPI";
 import { UserContext } from "../../../Contexts/UserContext";
 import {RiUserAddFill, RiUserUnfollowFill} from "react-icons/ri"
 import {AiFillMessage} from "react-icons/ai"
+import {useMediaQuery} from '@react-hook/media-query'
 const UserItem = ({user, setToUser, currentDisplay})=>{
     
     const {userID, username, friends} = useContext(UserContext)
     const [isFriend, setIsFriend] = useState(false)
     useEffect(() => {
-        console.log("ax")
         checkFriend()
 
         return () => {
@@ -22,11 +22,9 @@ const UserItem = ({user, setToUser, currentDisplay})=>{
     }, [friends])
 
     const checkFriend = () => {
-        console.log("judging if friend...")
         let friend = false
         for(let i=0; i<friends.length; i++){
             if(friends[i]._id === user._id){
-                console.log("is friend")
                 friend = true
                 break
             }

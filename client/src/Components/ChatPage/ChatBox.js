@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from "react"
-import io from "socket.io-client"
 import chatsAPI from "../../apis/chatsAPI"
 import SendChatBtn from "./SendChatBtn"
 import InputBox from "./InputBox"
 import ChatsDisplay from "./ChatsDisplay"
 import "./ChatBox.css"
 import "./messageBox.css"
+import "./ChatPage.css"
 import { UserContext } from "../../Contexts/UserContext"
 import ImageBtn from "./ImageButton"
 import ImagePreview from "./ImagePreview"
+import Button from "../Button"
+import { RxHamburgerMenu } from "react-icons/rx"
 
 
-const ChatBox = ({toUser}) => {
+const ChatBox = ({toUser, setShowDashboard}) => {
     const [message, setMessage] = useState({body:"", imgURL:null})
     const [imgToSend, setImgToSend] = useState(null)
     const [messages, setMessages] = useState([])
@@ -108,32 +110,33 @@ const ChatBox = ({toUser}) => {
         }
     }
     
-    return(<div className="chatBoxContainer">
+    return(
+    <div className="chatBoxContainer">
+        
+        <Button style={{position:"absolute", top:"10px", right:"10px", height:"60px", width:"60px"}} className={"ToggleDashboardBtn"} Icon={RxHamburgerMenu} iconClassName={"CloseDashboardIcon"} clickFunction={() => {setShowDashboard(true)}}/>
         <ChatsDisplay
             toUser={toUser}
             clientID={username}
             messages={messages}
         />
+       
         <div className="messageBox">
             <InputBox 
                 toUser={toUser}
                 message={message}
                 setMessage={setMessage}
                 sendMessage={sendMessage}
+                maxLength={1000}
             />
             {message.imgURL ?<ImagePreview imgToSend={imgToSend} imgURL={message.imgURL}/>:null}
             <div className="MessageBtns">
-                <ImageBtn
-                    imgToSend={imgToSend}
-                    setImgToSend={setImgToSend}
-                />
                 <SendChatBtn 
                     message={message}
                     sendMessage={sendMessage}
                 />
                 
             </div>
-        </div>
+        </div> 
         
     </div>)
 }

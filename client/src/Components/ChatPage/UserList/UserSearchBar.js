@@ -23,7 +23,6 @@ const UserSearchBar = (props) => {
                 <AiOutlineSearch className="searchIcon"/>
                 <button className="searchBtn" onClick={handleClick}/>
             </div>
-            
         </div>
        
     )

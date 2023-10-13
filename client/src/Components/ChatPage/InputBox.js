@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
 const InputBox = (props) => {
-    const {toUser, message, setMessage, sendMessage} = props
+    const {toUser, message, setMessage, sendMessage, maxLength} = props
 
     const [inputDisabled, setInputDisabled] = useState(true)
 
@@ -36,6 +36,7 @@ const InputBox = (props) => {
                 })}
             onKeyDown={e => {if(e.code === "Enter") handleEnter()}}
             disabled={inputDisabled}
+            maxLength={maxLength}
         />
     </>)
 }

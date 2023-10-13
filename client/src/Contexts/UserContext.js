@@ -72,6 +72,7 @@ export const UserContextProvider = ({children}) => {
             }else{
                 const res = await usersAPI.post("/auth", {email:email, username:username, password:await bcrypt.hash(password, 10)})
                 console.log(res)
+                return res.status
             } 
         }catch(error){
             console.log(error)

@@ -42,7 +42,7 @@ const Chat = (props) => {
         <div className="Chat">
             <div className="header">
                 <p className="username" style={usernameStyle}>{message.username}</p>
-                <p className="time">{timeDisplay}</p>
+                <p className="time" >{timeDisplay}</p>
             </div>
             <div className="mainBody"> 
                 <p>{message.body}</p>        

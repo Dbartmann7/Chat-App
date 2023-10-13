@@ -2,7 +2,8 @@
     width:100%;
     flex-direction: row;
     display: flex;
-    height: 97vh;
+    min-height: 100vh;
+    position: relative;
 }
 
 .ChatPageInput{
@@ -13,7 +14,14 @@
     color: rgb(173, 173, 173);
 }
 
+.ToggleDashboardBtn{
+    z-index: 1;
+    color: black;
+}
 
-
+.ToggleDashboardBtn:hover{
+    transform: scale(1.2, 1.2);
+    color:rgb(161, 160, 255) !important;
+}
 
 
