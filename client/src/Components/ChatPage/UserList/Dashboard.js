@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react"
+import { useMediaQuery } from "@react-hook/media-query"
 import usersAPI from "../../../apis/usersAPI"
 import "./Dashboard.css"
 import UserSearchBar from "./UserSearchBar"
@@ -8,7 +9,7 @@ import DashboardNav from "./DashboardNav"
 import Button from "../../Button"
 import {RxHamburgerMenu} from "react-icons/rx"
 
-const Dashboard = ({setToUser, setShowDashboard}) => {
+const Dashboard = ({setToUser, showDashboard, setShowDashboard}) => {
 
     
 
@@ -19,8 +20,23 @@ const Dashboard = ({setToUser, setShowDashboard}) => {
 
     const [currentDisplay, setCurrentDisplay] = useState(0)
     
-
-
+    const dashboardRef = useRef()
+    const {onMobile} = useContext(UserContext)
+    
+    useEffect(() => {
+        if(onMobile){
+            showDashboard ? dashboardRef.current.style.display = "flex": dashboardRef.current.style.display = "none"
+        }
+        
+    }, [showDashboard])
+    useEffect(() => {
+        if(!onMobile){
+            dashboardRef.current.style.display = "flex"
+        }else{
+            showDashboard ? dashboardRef.current.style.display = "flex": dashboardRef.current.style.display = "none"
+        }
+        
+    }, [onMobile])
     const searchUser = async () =>{
         
         try {
@@ -37,7 +53,7 @@ const Dashboard = ({setToUser, setShowDashboard}) => {
     }
     
     return(
-        <div className="DashboardContainer">
+        <div className="DashboardContainer" ref={dashboardRef}>
             <div className="DashboardHeader">
                 <UserSearchBar
                     userToSearch={userToSearch}
@@ -47,8 +63,8 @@ const Dashboard = ({setToUser, setShowDashboard}) => {
                 />
                 <Button style={{width:"40px", height:"40px"}} className={"ToggleDashboardBtn"} Icon={RxHamburgerMenu} iconClassName={"CloseDashboardIcon"} clickFunction={() => {setShowDashboard(false)}}/>
             </div>
-            {currentDisplay === 0 ? <UserList title="Friends List" users={friends} setToUser={setToUser} currentDisplay={currentDisplay}/>:
-                            <UserList title="Search Users" users={searchedUser}  setToUser={setToUser} currentDisplay={currentDisplay}/> }
+            {currentDisplay === 0 ? <UserList title="Friends List" users={friends} setToUser={setToUser} currentDisplay={currentDisplay} setShowDashboard={setShowDashboard}/>:
+                            <UserList title="Search Users" users={searchedUser}  setToUser={setToUser} currentDisplay={currentDisplay} setShowDashboard={setShowDashboard}/> }
             
             <DashboardNav 
                 setCurrentDisplay={setCurrentDisplay}    

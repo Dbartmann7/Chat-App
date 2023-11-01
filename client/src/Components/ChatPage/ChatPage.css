@@ -19,6 +19,13 @@
     color: black;
 }
 
+@media screen and (hover:hover){
+    .ToggleDashboardBtn{
+        display: none;
+        
+    }
+}
+
 .ToggleDashboardBtn:hover{
     transform: scale(1.2, 1.2);
     color:rgb(161, 160, 255) !important;

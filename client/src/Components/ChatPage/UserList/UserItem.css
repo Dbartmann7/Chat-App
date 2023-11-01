@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 80%;
-    height: 100px;
+    height: min-content;
     margin:5px;
     padding-left: 5%;
     padding-right: 5%;
@@ -16,6 +16,7 @@
     padding-top: 10px;
     margin-bottom: 0;
     text-indent: 10px;
+    font-size: 3vh;
 }
 
 .Buttons{
@@ -23,7 +24,10 @@
     gap: 20px;
     justify-content: start;
     width:100%;
-    height:50px;
+    height:calc(50px + 1vh);
+}
+.Buttons > div{
+    width:calc(50px + 1vh) !important;
 }
 
 .UserBtn{

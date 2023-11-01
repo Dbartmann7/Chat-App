@@ -7,7 +7,7 @@ import usersAPI from "../../apis/usersAPI";
 
 function SignUpPage( props) {
     const {username, setUsername, email, setEmail, password, setPassword, signUp} = useContext(UserContext)
-    const {setShowLogIn, validationFunctions} = props
+    const {setShowLogIn, validationFunctions, setShowInfo} = props
     const createAccount = async () => {
         const result = await signUp()
   
@@ -18,6 +18,7 @@ function SignUpPage( props) {
     }
     return (
         <div className='signUpPage'>
+            <Button className="infoBtn" displayText="Info" clickFunction={() => {setShowInfo(true)}}/>
             <h1 className="AuthTitle">Create An Account</h1>
             <div className="AuthInputsContainer">
                 <div className="AuthInputs">

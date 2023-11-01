@@ -3,12 +3,15 @@ import { UserContext } from "../../Contexts/UserContext";
 import "./UserLogin.css"
 import UserInput from "./UserInput";
 import Button from "../Button";
+
 const LogInPage = (props) => {
     const {username, setUsername, password, setPassword, logIn} = useContext(UserContext)
-    const {setShowLogIn} = props 
+    const {setShowLogIn, setShowInfo} = props 
 
     return (
         <div className='logInPage'>
+            
+            <Button className="infoBtn" displayText="Info" clickFunction={() => {setShowInfo(true)}}/>
             <h1 className="AuthTitle">Log In</h1>
             <div className="AuthInputsContainer">
                 <div className="AuthInputs">

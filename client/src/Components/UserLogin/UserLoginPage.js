@@ -3,8 +3,10 @@ import LogInPage from "./LogInPage";
 import SignUpPage from "./SignUpPage"
 import "./UserLogin.css"
 import { UserContext } from "../../Contexts/UserContext";
+import InfoPopUp from "./InfoPopUp";
 function UserLoginPage() {
     const [showLogIn, setShowLogIn] = useState(true)
+    const [showInfo, setShowInfo] = useState(false)
     const {username, email, password} = useContext(UserContext)
 
 
@@ -33,9 +35,10 @@ function UserLoginPage() {
     }
     return (
         <div className='userLoginPage'>
+            {showInfo ? <InfoPopUp setShowInfo={setShowInfo}/>:null}
             {showLogIn ? <LogInPage 
-            setShowLogIn={setShowLogIn}/>: 
-            <SignUpPage setShowLogIn={setShowLogIn} validationFunctions={validationFunctions}/>}       
+            setShowLogIn={setShowLogIn} setShowInfo={setShowInfo}/>: 
+            <SignUpPage setShowLogIn={setShowLogIn} validationFunctions={validationFunctions} setShowInfo={setShowInfo}/>}       
         </div>
     );
 }

@@ -9,16 +9,16 @@ const UserInput = (props) => {
         <div className="AuthInputContainer">
             <h2 className="authTitle">{stateType}</h2>
                 <div className="inputBox">
-                <input className="authInput"
-                    type={inputType}
-                    value={state}
-                    onChange={(e) => {
-                            setState(e.target.value)
+                    <input className="authInput"
+                        type={inputType}
+                        value={state}
+                        onChange={(e) => {
+                                setState(e.target.value)
+                            }
                         }
-                    }
-                    style={validationFunc ? (validationFunc() ? validStyle:invalidStyle): null}
-                />
-                {validationFunc? (validationFunc() ? <ValidationTick/>: <ValidationCross/>):null}
+                        style={validationFunc ? (validationFunc() ? validStyle:invalidStyle): null}
+                    />
+                    {validationFunc? (validationFunc() ? <ValidationTick/>: <ValidationCross/>):null}
                 </div>
         
         </div>

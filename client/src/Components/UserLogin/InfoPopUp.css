@@ -1,0 +1,37 @@
+.InfoPopUp{
+    position: absolute;
+    top: 0;
+    left:0;
+    max-width:100%;
+    width: 100%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background-color: rgb(68, 68, 68)
+}
+.InfoPopUpInner{
+    position: relative;
+    width:20%;
+    height: max-content;
+    padding:32px;
+    background-color: rgb(58, 58, 58);
+}
+.InfoCloseBtn{
+    position: absolute;
+    width:50px;
+    height:30px;
+    right: 16px !important; 
+    top:16px !important;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        transform: none;
+    }
+}
+.InfoPopUpInner>p, .InfoPopUpInner>h3{
+    color: rgb(167, 167, 167)
+}

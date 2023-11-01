@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { createContext, useState } from "react";
+import {useMediaQuery} from '@react-hook/media-query'
 import usersAPI from "../apis/usersAPI";
 import bcrypt from 'bcryptjs'
 import io from "socket.io-client"
@@ -15,6 +16,9 @@ export const UserContextProvider = ({children}) => {
     const [email, setEmail] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
     const [friends, setFriends] = useState([])
+    const onMobile = useMediaQuery('only screen and (hover:none)')
+
+    
     
     const updateFriends = async ()=>{
         try {
@@ -87,7 +91,7 @@ export const UserContextProvider = ({children}) => {
         password, setPassword,
         loggedIn, setLoggedIn,
         logIn, signUp,
-        socket
+        socket, onMobile
     }
     return(
         <UserContext.Provider value={value}>

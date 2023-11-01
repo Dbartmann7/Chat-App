@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
-import {useMediaQuery} from '@react-hook/media-query'
+import React, { useContext, useEffect, useRef, useState } from "react"
 import ChatBox from "./ChatBox"
 import "./ChatPage.css"
 import Dashboard from "./UserList/Dashboard.js"
@@ -10,8 +9,6 @@ const ChatPage = (props) => {
     const [toUser, setToUser] = useState({username:null, _id:null})
     const [showDashboard, setShowDashboard] = useState(true)
     
-    
-
     useEffect(() => {
        
         socket.on("friendsChanged", async () => {
@@ -30,19 +27,11 @@ const ChatPage = (props) => {
      
     }, [])
     
-    useEffect(() => {
-        
-        if(showDashboard){
-            // TODO: add code to switch to dashboard
-        }else{
-            // TODO: add code to switch to chatbox
-        }
-    }, [showDashboard])
     return(
        
         <div className="chatPageContainer">
             <ChatBox toUser={toUser} showDashboard={showDashboard} setShowDashboard={setShowDashboard}/>
-            {showDashboard ? <Dashboard setToUser={setToUser} setShowDashboard={setShowDashboard}/>: null}
+           <Dashboard setToUser={setToUser} showDashboard={showDashboard} setShowDashboard={setShowDashboard}/>
         </div>
   
     

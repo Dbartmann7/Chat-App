@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import chatsAPI from "../../apis/chatsAPI"
 import SendChatBtn from "./SendChatBtn"
 import InputBox from "./InputBox"
@@ -13,12 +13,32 @@ import Button from "../Button"
 import { RxHamburgerMenu } from "react-icons/rx"
 
 
-const ChatBox = ({toUser, setShowDashboard}) => {
+const ChatBox = ({toUser, showDashboard, setShowDashboard}) => {
     const [message, setMessage] = useState({body:"", imgURL:null})
     const [imgToSend, setImgToSend] = useState(null)
     const [messages, setMessages] = useState([])
     const {username, userID, socket} = useContext(UserContext) 
     const [newMessage, setNewMessage] = useState({sentFrom:""})
+
+    const chatBoxRef = useRef()
+    const {onMobile} = useContext(UserContext)
+
+    useEffect(() => {
+        if(onMobile){
+            showDashboard ? chatBoxRef.current.style.display = "none": chatBoxRef.current.style.display = "flex"
+        }
+        
+    }, [showDashboard])
+
+    useEffect(() => {
+        console.log(onMobile)
+        if(!onMobile){
+            chatBoxRef.current.style.display = "flex"
+        }else{
+            showDashboard ? chatBoxRef.current.style.display = "none": chatBoxRef.current.style.display = "flex"
+        }
+        
+    }, [onMobile])
     useEffect(() => {
         console.log(toUser._id)
         if(toUser){
@@ -56,6 +76,9 @@ const ChatBox = ({toUser, setShowDashboard}) => {
             })
         }
     }, [imgToSend])
+
+    
+
     const addMessage = (message) => {
         setMessages(prevMessages => {
             return [...prevMessages, message]
@@ -111,7 +134,7 @@ const ChatBox = ({toUser, setShowDashboard}) => {
     }
     
     return(
-    <div className="chatBoxContainer">
+    <div className="chatBoxContainer" ref={chatBoxRef}>
         
         <Button style={{position:"absolute", top:"10px", right:"10px", height:"60px", width:"60px"}} className={"ToggleDashboardBtn"} Icon={RxHamburgerMenu} iconClassName={"CloseDashboardIcon"} clickFunction={() => {setShowDashboard(true)}}/>
         <ChatsDisplay

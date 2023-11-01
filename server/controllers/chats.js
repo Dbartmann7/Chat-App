@@ -19,7 +19,7 @@ const postChat = async (req, res) => {
 
 const getChats = async (req, res) => {
     try{
-        // await Chats.deleteMany({})
+        await Chats.deleteMany({})
         const response = (await Chats.find({$or:[{sentFrom:req.query.sentFrom, to:req.query.toUser},{sentFrom:req.query.toUser, to:req.query.sentFrom}]}).sort({_id:-1})).reverse()
         res.json(response)
     }catch(error){

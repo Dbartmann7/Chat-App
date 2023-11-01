@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
+
 import "./UserItem.css"
 import Button from "../../Button";
 import usersAPI from "../../../apis/usersAPI";
 import { UserContext } from "../../../Contexts/UserContext";
 import {RiUserAddFill, RiUserUnfollowFill} from "react-icons/ri"
 import {AiFillMessage} from "react-icons/ai"
-import {useMediaQuery} from '@react-hook/media-query'
-const UserItem = ({user, setToUser, currentDisplay})=>{
+
+const UserItem = ({user, setToUser, setShowDashboard})=>{
     
     const {userID, username, friends} = useContext(UserContext)
     const [isFriend, setIsFriend] = useState(false)
+    const {onMobile} = useContext(UserContext)
     useEffect(() => {
         checkFriend()
 
@@ -43,6 +45,13 @@ const UserItem = ({user, setToUser, currentDisplay})=>{
         const res = await usersAPI.patch("/friends", {userID:userID, username:username, friendToAdd:user._id, type:"remove"})
         console.log(res)
     }
+
+    const openChat = () => {
+        setToUser({username:user.username, _id:user._id})
+        if(onMobile){
+            setShowDashboard(false)
+        }
+    }
     return(
         <div className="UserItem">
        
@@ -50,7 +59,7 @@ const UserItem = ({user, setToUser, currentDisplay})=>{
         
             <div className="Buttons">
                 {isFriend ? <Button className="UserBtn" Icon={RiUserUnfollowFill} clickFunction={removeFriend}/>:<Button className="UserBtn" Icon={RiUserAddFill} clickFunction={addFriend} />}
-                <Button className="UserBtn" Icon={AiFillMessage} clickFunction={() => {setToUser({username:user.username, _id:user._id})}} />
+                <Button className="UserBtn" Icon={AiFillMessage} clickFunction={openChat} />
             </div>
         </div>
     )
