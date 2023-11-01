@@ -2,6 +2,8 @@
   "dependencies": {
     "@react-hook/media-query": "^1.1.1",
     "concurrently": "^8.2.2",
+    "express": "^4.18.2",
+    "react": "^18.2.0",
     "react-device-detect": "^2.2.3"
   },
   "scripts": {
