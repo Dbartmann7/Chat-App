@@ -12,6 +12,7 @@
     "react-device-detect": "^2.2.3",
     "react-icons": "^4.11.0",
     "react-scripts": "^5.0.1",
+    "serve": "^14.2.1",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
     "socketio": "^1.0.0"
