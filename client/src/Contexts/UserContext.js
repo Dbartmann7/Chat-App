@@ -4,7 +4,9 @@ import {useMediaQuery} from '@react-hook/media-query'
 import usersAPI from "../apis/usersAPI";
 import bcrypt from 'bcryptjs'
 import io from "socket.io-client"
-const socket = io.connect("http://localhost:8000")
+
+console.log(process.env.REACT_APP_SOCKET_SERVER_ADDRESS)
+const socket = io.connect(process.env.REACT_APP_SOCKET_SERVER_ADDRESS)
 
 export const UserContext = createContext({})
 
