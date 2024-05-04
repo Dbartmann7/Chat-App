@@ -5,8 +5,9 @@ import usersAPI from "../apis/usersAPI";
 import bcrypt from 'bcryptjs'
 import io from "socket.io-client"
 
+
 console.log(process.env.REACT_APP_SOCKET_SERVER_ADDRESS)
-const socket = io.connect(process.env.REACT_APP_SOCKET_SERVER_ADDRESS)
+const socket = io.connect(process.env.REACT_APP_SOCKET_SERVER_ADDRESS, { transports: ["websocket"] })
 
 export const UserContext = createContext({})
 
@@ -49,7 +50,7 @@ export const UserContextProvider = ({children}) => {
                     'Content-Type': 'application/json',
                   }
             })
-       
+           
             console.log(user.data)
             
             socket.emit("login", {userID:user.data._id})
