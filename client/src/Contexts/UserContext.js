@@ -43,7 +43,11 @@ export const UserContextProvider = ({children}) => {
         try{
             // get user data
             const user = await usersAPI.get("/user",{params:{
-                username:inputUsername}
+                username:inputUsername},
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                  }
             })
        
             console.log(user.data)
