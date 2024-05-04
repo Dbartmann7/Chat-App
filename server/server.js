@@ -14,7 +14,8 @@ const usersRoute = require("./routes/users")
 const Users = require("./models/Users")
 const io = new Server({
     cors:{
-        origin:"*"
+        origin:process.env.CURRENT_CLIENT_DOMAIN,
+        
     }
 })
 io.listen(process.env.SOCKET_SERVER_PORT)
