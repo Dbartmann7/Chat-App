@@ -15,7 +15,7 @@ const io = new Server({
         origin:"*"
     }
 })
-io.listen(process.env.SOCKET_SERVER_PORT)
+io.listen(process.env.SOCKET_SERVER_PORT, { transports: ["websocket"] })
 app.use("/api/v1/chats", chats)
 app.use("/api/v1/users", usersRoute)
 
