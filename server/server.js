@@ -35,11 +35,12 @@ const start = async () => {
 start()
 
 const usersWatcher = Users.watch()
+// keeps track of the sockets for users currently logged in
 let users = {}
 
 
 usersWatcher.on("change", (change) => {
-
+    // if a user's friend list is updated and that user is logged in, let the user's client know
     if(change.operationType === "update" && change.updateDescription.updatedFields.friends){
         if(users[change.documentKey._id]){
             console.log("friend changed")
@@ -49,25 +50,23 @@ usersWatcher.on("change", (change) => {
     }
 })
 
-
+// **** SOCKETS **** //
 io.on("connection", (socket) => {
 
     console.log(`"user connected: ${socket.id}"`)
-
+    // Send 500 if user is already logged in
+    // create new socket with userID, add to list of users
     socket.on("login", (userData) => {
-       
         if(users[userData.userID]){
             socket.emit("login", {status:500, error:"user already on logged in"})
         }else{
             socket.data.userID = userData.userID
             users[userData.userID] = {socket:socket}
             socket.emit("login", {status:200})
-            console.log(Object.keys(users))
         }
-        
-        
     })
     
+    // when new chat is sent, send the chat directly to the user if they are logged in
     socket.on("newChat", ({message, toUser, sentFrom}) => {
         if(users[toUser]){
             const body = message.body
@@ -77,6 +76,7 @@ io.on("connection", (socket) => {
         }
     })
 
+    // remove user socket from users when user disconnects
     socket.once("disconnect", async () => {
         delete users[socket.data.userID]
      

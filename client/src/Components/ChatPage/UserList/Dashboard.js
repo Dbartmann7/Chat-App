@@ -41,7 +41,7 @@ const Dashboard = ({setToUser, showDashboard, setShowDashboard}) => {
         
         try {
             console.log("Searching user...")
-            const res = await usersAPI.get("/", {params:{username:userToSearch}})
+            const res = await usersAPI.get("/user", {params:{username:userToSearch}})
             if(res.status===200){
                 setSearchedUser([res.data])
                 console.log(res.data)

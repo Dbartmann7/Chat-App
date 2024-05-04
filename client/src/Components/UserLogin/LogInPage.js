@@ -3,16 +3,23 @@ import { UserContext } from "../../Contexts/UserContext";
 import "./UserLogin.css"
 import UserInput from "./UserInput";
 import Button from "../Button";
+import { IoInformationCircleOutline } from "react-icons/io5";
+import ProfileItem from "./ProfileItem/ProfileItem";
+import { profiles } from "./Profiles/profiles";
+
 
 const LogInPage = (props) => {
     const {username, setUsername, password, setPassword, logIn} = useContext(UserContext)
-    const {setShowLogIn, setShowInfo} = props 
+   
 
+    function clickFn(username){
+        logIn(username)
+    }
     return (
         <div className='logInPage'>
-            
-            <Button className="infoBtn" displayText="Info" clickFunction={() => {setShowInfo(true)}}/>
-            <h1 className="AuthTitle">Log In</h1>
+             <header className="log-in-header">
+                <h1 className="AuthTitle">Log In</h1>
+            </header>
             <div className="AuthInputsContainer">
                 <div className="AuthInputs">
                     <UserInput
@@ -29,9 +36,16 @@ const LogInPage = (props) => {
                     />
                 </div>
             </div>
-            <div className="buttons">
-                <Button className="authBtn" displayText={"Sign Up"} clickFunction={() => {setShowLogIn(0)}}/>
-                <Button className="authBtn" displayText={"Login"} clickFunction={logIn}/>
+        
+            <div className="seperation-line"/>
+            <h1 className="demo-header">Demo Accounts</h1>
+            <div className="profiles">
+                
+                {
+                    profiles.map((profile => {
+                        return <ProfileItem username={profile.username} imgSrc={profile.imgSrc} clickFn={clickFn}/>
+                    }))
+                }
             </div>
         </div>
     );

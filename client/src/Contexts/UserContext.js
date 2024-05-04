@@ -24,7 +24,7 @@ export const UserContextProvider = ({children}) => {
     
     const updateFriends = async ()=>{
         try {
-            const res = await usersAPI.get("/", {params:{_id:userID}})
+            const res = await usersAPI.get("/user", {params:{_id:userID}})
             console.log(res.data)   
             if(res.status === 200){
                 setFriends(res.data.friends)
@@ -36,32 +36,30 @@ export const UserContextProvider = ({children}) => {
 
     
 
-    const logIn = async () => {
-        if(!username){
+    const logIn = async (inputUsername) => {
+        if(!inputUsername){
             return null
         }
         try{
             // get user data
-            const user = await usersAPI.get("/auth",{params:{
-                username:username}
+            const user = await usersAPI.get("/user",{params:{
+                username:inputUsername}
             })
        
-            console.log(password)
-            if(await bcrypt.compare(password, user.data.user.password)){
-                socket.emit("login", {userID:user.data.user._id})
-                socket.on("login", res => {
-                    if(res.status === 200){
-                        setLoggedIn(true)
-                        setFriends(user.data.user.friends)
-                        setUserID(user.data.user._id)
-                    }else{
-                        alert(res.error)
-                    }
-                })
-                
+            console.log(user.data)
+            
+            socket.emit("login", {userID:user.data._id})
+            socket.on("login", res => {
+            if(res.status === 200){
+                setLoggedIn(true)
+                setFriends(user.data.friends)
+                setUserID(user.data._id)
+                setUsername(user.data.username)
             }else{
-                alert("wrong password")
+                alert(res.error)
             }
+        })
+           
             
         }catch(error){
             console.log(error)

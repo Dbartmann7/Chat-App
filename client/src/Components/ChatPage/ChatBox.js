@@ -58,9 +58,7 @@ const ChatBox = ({toUser, showDashboard, setShowDashboard}) => {
         })
       
     }, [])
-    useEffect(() => {
-        console.log(messages)
-    }, [messages])
+   
     useEffect(() => {
         if(imgToSend){
             setMessage(prevMessage => {
@@ -85,7 +83,6 @@ const ChatBox = ({toUser, showDashboard, setShowDashboard}) => {
         })
     } 
     useEffect(() => {
-        console.log(Date.now())
         const postMessage = async ()=>{
             if(message.timeSent){
                 const res = await chatsAPI.post("/", {message:message, sentFrom:userID, toUser:toUser._id})

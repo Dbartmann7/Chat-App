@@ -1,0 +1,28 @@
+.profile-btn{
+    display: flex;
+    background-color:transparent;
+    width:calc(60px + 6px);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: relative;
+    object-fit: fill;
+    border:inset 4px;
+    padding:0;
+
+    &:hover{
+        background-color: aqua;
+    }
+}
+.profile-img{
+    width:60px;
+    aspect-ratio: 1/1;
+    object-fit:cover;
+    border-radius: inherit;
+    position: absolute;
+    inset: 50%;
+    translate: -50% -50%;
+
+    &:hover{
+        filter: brightness(75%);
+    }
+}

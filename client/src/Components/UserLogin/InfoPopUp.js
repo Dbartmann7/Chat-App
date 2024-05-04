@@ -9,12 +9,18 @@ const InfoPopUp = ({setShowInfo}) => {
             <div className="InfoPopUpInner">
             <Button className={"InfoCloseBtn"} displayText={"Close"} clickFunction={() => {setShowInfo(false)}}/>
             <h3>Test Accounts</h3>
-                <p>Username: test1 | Password:test<br/>Username: test2 | Password:test<br/></p>
-            <h3>Skills Used</h3>
-                <p>Javacript, Responsive CSS, React, ExpressJS, Socket.io, MongoDB, Mongoose</p>
+                <p>Username: test1 | Password:test</p>
+                <p>Username: test2 | Password:test</p>
             </div>
         </div>
     );
 }
 
 export default InfoPopUp;
+{/* <div className="profiles">
+                {
+                    profiles.map((profile => {
+                        return <ProfileItem username={profile.username} imgSrc={profile.imgSrc} clickFn={clickFn}/>
+                    }))
+                }
+            </div> */}

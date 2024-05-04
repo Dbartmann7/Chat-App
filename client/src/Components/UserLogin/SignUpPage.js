@@ -18,8 +18,9 @@ function SignUpPage( props) {
     }
     return (
         <div className='signUpPage'>
-            <Button className="infoBtn" displayText="Info" clickFunction={() => {setShowInfo(true)}}/>
-            <h1 className="AuthTitle">Create An Account</h1>
+            <header className="log-in-header"> 
+                <h1 className="AuthTitle">Create An Account</h1>
+            </header>
             <div className="AuthInputsContainer">
                 <div className="AuthInputs">
                     <UserInput
@@ -47,8 +48,8 @@ function SignUpPage( props) {
                 </div>
             </div>
             <div className="buttons">
-                <Button className="authBtn" displayText={"Login"} clickFunction={() => {setShowLogIn(1)}}/>
                 <Button className="authBtn" displayText={"Create Account"} clickFunction={createAccount}/>
+                <Button className="authBtn" displayText={"Login"} clickFunction={() => {setShowLogIn(1)}}/>
             </div>
         </div>
     );

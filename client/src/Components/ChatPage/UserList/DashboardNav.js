@@ -15,7 +15,7 @@ const DashboardNav = ({ setCurrentDisplay}) =>{
 
     return(
         <div className="DashboardNavContainer">
-            <Button className="DashboardNavBtn"  Icon={RiUserSearchFill} clickFunction={showSearchedUserList}/>
+            <Button className="DashboardNavBtn"  Icon={RiUserSearchFill} clickFunction={showSearchedUserList} style={{borderRadiusLeft:"25px"}}/>
             <Button className="DashboardNavBtn"  Icon={FaUserFriends} clickFunction={showFriendList}/>
         </div>
     )

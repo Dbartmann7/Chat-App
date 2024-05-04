@@ -1,0 +1,11 @@
+.profile-item{
+    display: flex;
+    flex-direction: column;
+    gap:2px;
+    width:80px;
+    align-items: center;
+}
+.profile-name{
+    margin: 0;
+    color: white;
+}

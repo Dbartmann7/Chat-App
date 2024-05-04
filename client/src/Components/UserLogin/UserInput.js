@@ -7,11 +7,11 @@ const UserInput = (props) => {
 
     return(
         <div className="AuthInputContainer">
-            <h2 className="authTitle">{stateType}</h2>
-                <div className="inputBox">
-                    <input className="authInput"
+                <div className="input-box-container">
+                    <input className="auth-input-box"
                         type={inputType}
                         value={state}
+                        placeholder={stateType}
                         onChange={(e) => {
                                 setState(e.target.value)
                             }

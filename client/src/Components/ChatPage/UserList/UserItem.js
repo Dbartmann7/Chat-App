@@ -53,15 +53,17 @@ const UserItem = ({user, setToUser, setShowDashboard})=>{
         }
     }
     return(
-        <div className="UserItem">
-       
-            <h2 className="username">{user.username}</h2>
+        username !== user.username ? 
+            <div className="UserItem">
         
-            <div className="Buttons">
-                {isFriend ? <Button className="UserBtn" Icon={RiUserUnfollowFill} clickFunction={removeFriend}/>:<Button className="UserBtn" Icon={RiUserAddFill} clickFunction={addFriend} />}
-                <Button className="UserBtn" Icon={AiFillMessage} clickFunction={openChat} />
+                <h2 className="username">{user.username}</h2>
+            
+                <div className="Buttons">
+                    {isFriend ? <Button className="UserBtn" Icon={RiUserUnfollowFill} clickFunction={removeFriend}/>:<Button className="UserBtn" Icon={RiUserAddFill} clickFunction={addFriend} />}
+                    <Button className="UserBtn" Icon={AiFillMessage} clickFunction={openChat} />
+                </div>
             </div>
-        </div>
+        :null
     )
 }
 

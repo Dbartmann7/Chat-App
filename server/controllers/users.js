@@ -4,9 +4,7 @@ const Users = require("../models/Users")
 const createUser = async (req, res) =>{
     try {
         const result = await Users.create({
-            email:req.body.email,
             username:req.body.username,
-            password:req.body.password,
             friends: []
         })
         console.log(result)
@@ -17,35 +15,20 @@ const createUser = async (req, res) =>{
     }
 }
 
-// gets requested user details to compare passwords at log in
-const getUserAuth = async (req, res) => {
-    try{
- 
-        const user = await Users.findOne({username:req.query.username})
-        console.log(user)
-        
-        res.status(200).json({user:user})
-        
-        
-
-    }catch(error){
-        console.log(error)
-        res.status(500).json({error:error})
-    }
-}
-
-
 // returns a requested user without the password
 const getUser = async (req, res) => {
+    
     try {
+        console.log(req.query)
         let user = null
         if(req.query.username){
-            user = await Users.findOne({username:req.query.username})
+            user = await Users.findOne({username:{'$regex': req.query.username,$options:'i'}})
         }else if(req.query._id){
             user = await Users.findOne({_id:req.query._id})
         }else{
             res.status(400).json({message:`please enter a username or an id`})
         }
+        console.log(user)
         
         if(user){
             res.status(200).json({_id:user._id, username:user.username, friends:user.friends})
@@ -57,6 +40,7 @@ const getUser = async (req, res) => {
         console.log(error)
         res.status(500).json({error:error})
     }
+    
 }
 
 const patchFriends = async (req, res) => {
@@ -110,4 +94,4 @@ const patchFriends = async (req, res) => {
     }
 }
 
-module.exports = {getUserAuth, getUser, createUser, patchFriends}
+module.exports = {getUser, createUser, patchFriends}

@@ -1,9 +1,6 @@
 .chatPageContainer{
-    width:100%;
-    flex-direction: row;
     display: flex;
     min-height: 100vh;
-    position: relative;
 }
 
 .ChatPageInput{

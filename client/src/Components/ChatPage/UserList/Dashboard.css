@@ -10,7 +10,6 @@
     margin-bottom: 10px;
     max-height: calc(100vh - 20px);
     min-width: 260px;
-    min-height: 500px;
     position: relative;
 }
 
@@ -40,6 +39,7 @@
     position: relative;
     height: 100%;
     width:85%;
+    margin-left: 5px;
 }
 .searchContainer>input{
     width: calc(100% - 2em);
