@@ -33,7 +33,7 @@ const getUser = async (req, res) => {
         if(user){
             res.status(200).json({_id:user._id, username:user.username, friends:user.friends})
         }else{
-            res.status(404).json({message:`user ${req.query.username} not found`})
+            res.status(400).json({message:`user ${req.query.username} not found`})
         }
         
     } catch (error) {
