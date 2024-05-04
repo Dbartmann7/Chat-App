@@ -7,7 +7,8 @@ import io from "socket.io-client"
 
 
 console.log(process.env.REACT_APP_SOCKET_SERVER_ADDRESS)
-const socket = io.connect(process.env.REACT_APP_SOCKET_SERVER_ADDRESS, { transports: ["websocket"], upgrade: false })
+const socket = io(process.env.REACT_APP_SOCKET_SERVER_ADDRESS, { transports: ["websocket"], reconnectionAttempts: "Infinity",
+timeout: 10000, })
 
 export const UserContext = createContext({})
 

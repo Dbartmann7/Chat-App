@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 const {connectDB} = require("./db/connect")
-const { Server } = require("socket.io")
+
 require("dotenv").config()
 app.use(express.json())
 const cors = require('cors');
@@ -10,20 +10,18 @@ app.use(cors());
 const chats = require("./routes/chats")
 const usersRoute = require("./routes/users")
 const Users = require("./models/Users")
-const io = new Server({
-    cors:{
-        origin:"*"
-    }
-})
-io.listen(process.env.SOCKET_SERVER_PORT, { transports: ["websocket"], upgrade: false })
+
+
 app.use("/api/v1/chats", chats)
 app.use("/api/v1/users", usersRoute)
+const server = require("http").createServer(app)
+const io = require("socket.io")(server)
 
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URI)
         console.log("connected to db...")
-        app.listen(process.env.PORT || 5000, () => {
+        server.listen(process.env.PORT || 5000, () => {
             console.log(`server listening on port ${process.env.EXPRESS_SERVER_PORT}`)
         })
         
