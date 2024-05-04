@@ -50,6 +50,10 @@ usersWatcher.on("change", (change) => {
     }
 })
 
+io.on("connect_error", (err) => {
+    console.log(`connect_error due to ${err.message}`);
+  });
+
 // **** SOCKETS **** //
 io.on("connection", (socket) => {
 
