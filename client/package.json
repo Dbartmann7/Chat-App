@@ -25,8 +25,8 @@
   },
   "scripts": {
     "dev": "react-scripts start --max_old_space_size=1000000 start",
-    "start": "serve build -s -n -L -p $PORT",
-    "build": "react-scripts build",
+    "start": "react-scripts --max_old_space_size=4096 start",
+    "build": "react-scripts --max_old_space_size=4096 build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
