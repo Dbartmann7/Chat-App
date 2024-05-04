@@ -21,7 +21,11 @@ export const UserContextProvider = ({children}) => {
     const [friends, setFriends] = useState([])
     const onMobile = useMediaQuery('only screen and (hover:none)')
 
-    
+    useEffect(() => {
+        socket.on("connect_error", (err) => {
+            console.log(`connect_error due to ${err.message}`);
+          });
+    }, [])
     
     const updateFriends = async ()=>{
         try {
