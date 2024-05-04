@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const chatsAPI = axios.create({
-    baseURL:"http://localhost:5000/api/v1/chats"
+    baseURL:`${process.env.REACT_APP_EXPRESS_SERVER_ADDRESS}/api/v1/chats`
 })
 
 export default chatsAPI
